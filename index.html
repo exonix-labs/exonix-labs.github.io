@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Exonix Labs is a premium software lab for desktop tools, productivity, gaming utilities, video tools, and performance software.">
+  <title>Exonix Labs — Premium Desktop Software Hub</title>
+  <link rel="icon" type="image/png" href="icons/ExonixLabs_Icon.png">
+  <link rel="apple-touch-icon" href="icons/ExonixLabs_Icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="top">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="#home" class="brand" aria-label="Exonix Labs home">
+        <span class="brand-mark"><img src="icons/ExonixLabs_Icon.png" alt="" aria-hidden="true"></span>
+        <span>Exonix Labs</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#software">Software</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="https://github.com/EnukaSathmina">GitHub</a>
+        <a class="btn btn-primary" href="#software">Download</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-glow glow-one"></div>
+      <div class="hero-glow glow-two"></div>
+
+      <div class="hero-content reveal">
+        <div class="eyebrow">Premium software built for performance</div>
+        <h1>One Lab. Powerful Software for Modern Users.</h1>
+        <p>Exonix Labs builds premium desktop tools for backup, gaming optimization, motion blur rendering, productivity, and power users.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-large" href="#software">Explore Software</a>
+          <a class="btn btn-ghost btn-large" href="https://github.com/EnukaSathmina">View GitHub</a>
+        </div>
+      </div>
+
+      <div class="hero-showcase reveal" aria-label="Featured software preview cards">
+        <article class="floating-card card-a">
+          <span class="software-icon sync"><img src="icons/SyncForge_Icon.ico" alt="" aria-hidden="true"></span>
+          <div>
+            <strong>SyncForge by Exonix Labs</strong>
+            <small>Backup automation</small>
+          </div>
+        </article>
+        <article class="floating-card card-b">
+          <span class="software-icon game"><img src="icons/GamePulse_Icon.ico" alt="" aria-hidden="true"></span>
+          <div>
+            <strong>GamePulse by Exonix Labs</strong>
+            <small>PC performance dashboard</small>
+          </div>
+        </article>
+        <article class="floating-card card-c">
+          <span class="software-icon frame"><img src="icons/FrameForge_Icon.png" alt="" aria-hidden="true"></span>
+          <div>
+            <strong>FrameForge by Exonix Labs</strong>
+            <small>Motion blur video rendering</small>
+            <em>Fully Free</em>
+          </div>
+        </article>
+        <div class="orbital-preview">
+          <div class="preview-window">
+            <div class="window-bar"><span></span><span></span><span></span></div>
+            <div class="preview-grid">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="preview-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats section compact" aria-label="Software hub statistics">
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <strong data-count="4">0</strong>
+          <span>Software Products</span>
+        </div>
+        <div class="stat-card reveal">
+          <strong data-count="1000">0</strong>
+          <span>Downloads</span>
+        </div>
+        <div class="stat-card reveal">
+          <strong>Windows</strong>
+          <span>Ready</span>
+        </div>
+        <div class="stat-card reveal">
+          <strong>Premium</strong>
+          <span>UI Experience</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="software">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Software Library</span>
+        <h2>Download Center</h2>
+        <p>Search, filter, and open product details from one polished hub.</p>
+      </div>
+
+      <div class="software-toolbar reveal">
+        <label class="search-box" for="softwareSearch">
+          <span>Search</span>
+          <input id="softwareSearch" type="search" placeholder="Search software or tags">
+        </label>
+        <div class="category-tabs" role="tablist" aria-label="Software categories">
+          <button class="tab active" type="button" data-filter="All">All</button>
+          <button class="tab" type="button" data-filter="Backup">Backup</button>
+          <button class="tab" type="button" data-filter="Gaming">Gaming</button>
+          <button class="tab" type="button" data-filter="Video">Video</button>
+          <button class="tab" type="button" data-filter="Free">Free</button>
+          <button class="tab" type="button" data-filter="Coming Soon">Coming Soon</button>
+        </div>
+      </div>
+
+      <div class="software-grid" id="softwareGrid">
+        <article class="software-card reveal" data-name="SyncForge by Exonix Labs" data-category="Backup Productivity Premium" data-version="v1.0" data-status="Premium Trial" data-direct-download="https://github.com/EnukaSathmina/SyncForge/releases/download/SyncForge_v1.0/SyncForge.exe" data-github-download="https://github.com/EnukaSathmina/SyncForge">
+          <div class="card-top">
+            <span class="software-icon sync"><img src="icons/SyncForge_Icon.ico" alt="" aria-hidden="true"></span>
+            <div class="badges"><span>v1.0</span><span>Premium Trial</span></div>
+          </div>
+          <h3>SyncForge by Exonix Labs</h3>
+          <p>A premium desktop backup solution with full backups, scheduled backups, restore tools, and trial/license system.</p>
+          <div class="tags"><span>Backup</span><span>Productivity</span><span>Premium</span></div>
+          <div class="card-actions">
+            <button class="btn btn-primary open-modal" type="button">Download</button>
+            <a class="btn btn-soft" href="https://github.com/EnukaSathmina/SyncForge/releases">Release Notes</a>
+            <a class="btn btn-ghost" href="https://syncforge-web.github.io/">Learn More</a>
+          </div>
+        </article>
+
+        <article class="software-card reveal" data-name="GamePulse by Exonix Labs" data-category="Gaming Optimizer System Tools" data-version="v1.0" data-status="Trial / Premium" data-direct-download="https://github.com/EnukaSathmina/GamePulse/releases/download/v1.0/GamePulse.exe" data-github-download="https://github.com/EnukaSathmina/GamePulse">
+          <div class="card-top">
+            <span class="software-icon game"><img src="icons/GamePulse_Icon.ico" alt="" aria-hidden="true"></span>
+            <div class="badges"><span>v1.0</span><span>Trial / Premium</span></div>
+          </div>
+          <h3>GamePulse by Exonix Labs</h3>
+          <p>A gaming utility dashboard with system monitoring, optimization tools, license system, and high-end PC information UI.</p>
+          <div class="tags"><span>Gaming</span><span>Optimizer</span><span>System Tools</span></div>
+          <div class="card-actions">
+            <button class="btn btn-primary open-modal" type="button">Download</button>
+            <a class="btn btn-soft" href="https://github.com/EnukaSathmina/GamePulse/releases">Release Notes</a>
+            <a class="btn btn-ghost" href="https://gamepulse-dev.github.io/">Learn More</a>
+          </div>
+        </article>
+
+        <article class="software-card reveal" data-name="FrameForge by Exonix Labs" data-category="Video Motion Blur Free Tool" data-version="v1.0" data-status="Fully Free" data-direct-download="https://github.com/EnukaSathmina/FrameForge/releases/download/v1.4/FrameForge_v1.4.exe" data-github-download="https://github.com/EnukaSathmina/FrameForge">
+          <div class="card-top">
+            <span class="software-icon frame"><img src="icons/FrameForge_Icon.png" alt="" aria-hidden="true"></span>
+            <div class="badges"><span>v1.0</span><span>Fully Free</span></div>
+          </div>
+          <h3>FrameForge by Exonix Labs</h3>
+          <p>A lightweight desktop video processing tool for applying real-time motion blur effects and exporting high-quality rendered videos.</p>
+          <div class="tags"><span>Video</span><span>Motion Blur</span><span>Free Tool</span></div>
+          <div class="card-actions">
+            <button class="btn btn-primary open-modal" type="button">Download</button>
+            <a class="btn btn-soft" href="https://github.com/EnukaSathmina/FrameForge/releases">Release Notes</a>
+            <a class="btn btn-ghost" href="#">Learn More</a>
+          </div>
+        </article>
+
+        <article class="software-card reveal coming" data-name="Future Product" data-category="New Upcoming Software Coming Soon" data-version="TBA" data-status="In Development" data-direct-download="#" data-github-download="#">
+          <div class="card-top">
+            <span class="software-icon future"><img src="icons/ExonixLabs_Icon.png" alt="" aria-hidden="true"></span>
+            <div class="badges"><span>TBA</span><span>In Development</span></div>
+          </div>
+          <h3>Future Product</h3>
+          <p>A coming soon space for upcoming tools, experiments, and new premium desktop software releases.</p>
+          <div class="tags"><span>New</span><span>Upcoming</span><span>Software</span></div>
+          <div class="card-actions">
+            <button class="btn btn-primary open-support-modal" type="button" data-support-modal="waitlistModal">Join Waitlist</button>
+            <a class="btn btn-ghost open-future-modal" href="#futureProductModal">Learn More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section featured-product">
+      <div class="featured-preview reveal">
+        <div class="preview-window large">
+          <div class="window-bar"><span></span><span></span><span></span></div>
+          <div class="dashboard-mock">
+            <div class="side-rail"></div>
+            <div class="dashboard-main">
+              <span></span>
+              <div class="metric-row"><i></i><i></i><i></i></div>
+              <div class="chart-bars"><b></b><b></b><b></b><b></b><b></b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-copy reveal">
+        <span class="eyebrow">Featured Product</span>
+        <h2>SyncForge by Exonix Labs Backup Suite</h2>
+        <p>Protect important files with full backups, restore tools, scheduled jobs, and a premium licensing workflow built for serious desktop users.</p>
+        <ul class="feature-list">
+          <li>Full and scheduled backup workflows</li>
+          <li>Restore tools with clean desktop UI</li>
+          <li>Includes 3-day trial</li>
+          <li>License activation for full access and updates</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-large" href="https://syncforge-web.github.io/#download">Download SyncForge</a>
+          <a class="btn btn-ghost btn-large" href="https://syncforge-web.github.io/buy.html">Buy License</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Platform Features</span>
+        <h2>Built Like A Premium Product Shelf</h2>
+        <p>Everything users need to evaluate, download, and keep track of your desktop tools.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card reveal"><span>FD</span><h3>Fast Downloads</h3><p>Clear download actions with release-ready destinations.</p></article>
+        <article class="feature-card reveal"><span>RN</span><h3>Clean Release Notes</h3><p>Version details and changelog links for every product.</p></article>
+        <article class="feature-card reveal"><span>PT</span><h3>Premium Desktop Tools</h3><p>A high-end presentation for professional software releases.</p></article>
+        <article class="feature-card reveal"><span>TL</span><h3>Trial & License Support</h3><p>Trial, premium, and license flows are highlighted clearly.</p></article>
+        <article class="feature-card reveal"><span>GH</span><h3>GitHub Releases Integration</h3><p>Static links can point directly to GitHub releases later.</p></article>
+        <article class="feature-card reveal"><span>SD</span><h3>Secure Distribution</h3><p>Designed around trusted downloads and transparent product info.</p></article>
+      </div>
+    </section>
+
+    <section class="section pricing" id="pricing">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Licensing</span>
+        <h2>Choose Your Access</h2>
+        <p>Simple paths for free tools, time-limited trials, and premium licenses.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="pricing-card reveal">
+          <h3>Free Tools</h3>
+          <p>For selected free software and open releases.</p>
+          <strong>$0</strong>
+          <a class="btn btn-ghost" id="viewFreeToolsBtn" href="#software">View Free Tools</a>
+        </article>
+        <article class="pricing-card featured reveal">
+          <h3>Trial Products</h3>
+          <p>Includes 3-day trial access for premium software.</p>
+          <strong>3 Days</strong>
+          <a class="btn btn-primary" href="#software">Start Trial</a>
+        </article>
+        <article class="pricing-card reveal">
+          <h3>Premium License</h3>
+          <p>For full access, updates, and unlocked features.</p>
+          <strong>License</strong>
+          <a class="btn btn-ghost" href="#software">Buy License</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section how">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Workflow</span>
+        <h2>How It Works</h2>
+      </div>
+      <div class="timeline">
+        <article class="step reveal">
+          <div class="step-top">
+            <span class="step-badge">01</span>
+            <span class="workflow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+              </svg>
+            </span>
+          </div>
+          <h3>Select Your Software</h3>
+          <p>Browse the Exonix Labs software library and choose the tool that matches your workflow, setup, or project needs.</p>
+        </article>
+        <article class="step reveal">
+          <div class="step-top">
+            <span class="step-badge">02</span>
+            <span class="workflow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 18a4 4 0 1 1 .8-7.9A5.5 5.5 0 0 1 18.5 11 3.5 3.5 0 1 1 18 18Z"></path>
+                <path d="M12 8v8"></path>
+                <path d="m8.8 13.6 3.2 3.3 3.2-3.3"></path>
+              </svg>
+            </span>
+          </div>
+          <h3>Download Securely</h3>
+          <p>Use direct downloads or GitHub release pages to get the latest verified version of each product.</p>
+        </article>
+        <article class="step reveal">
+          <div class="step-top">
+            <span class="step-badge">03</span>
+            <span class="workflow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 19h14"></path>
+                <path d="M12 15V5"></path>
+                <path d="m8 9 4-4 4 4"></path>
+                <path d="m14.5 13.5 4.5 4.5"></path>
+                <path d="M18 13h1v1"></path>
+              </svg>
+            </span>
+          </div>
+          <h3>Install &amp; Explore</h3>
+          <p>Install the software, launch the app, and test available features through free, trial, or premium access modes.</p>
+        </article>
+        <article class="step reveal">
+          <div class="step-top">
+            <span class="step-badge">04</span>
+            <span class="workflow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 11V8a4 4 0 1 1 8 0v3"></path>
+                <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                <path d="m14.5 15.5 2-2"></path>
+                <path d="m16.5 17.5-2-2"></path>
+              </svg>
+            </span>
+          </div>
+          <h3>Unlock Full Access</h3>
+          <p>Activate your license to unlock premium features, updates, and the complete Exonix Labs software experience.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section releases">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Release Notes</span>
+        <h2>Latest Timeline</h2>
+      </div>
+      <div class="release-list reveal">
+        <div><span></span><strong>SyncForge by Exonix Labs v1.0 released</strong><small>Premium backup suite launch</small></div>
+        <div><span></span><strong>GamePulse by Exonix Labs v1.0 released</strong><small>Gaming utility dashboard launch</small></div>
+        <div><span></span><strong>FrameForge by Exonix Labs v1.0 released</strong><small>Free motion blur video rendering tool</small></div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="section-heading reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions Before Downloading</h2>
+      </div>
+      <div class="faq-list reveal">
+        <button class="faq-item" type="button"><span>Is the software free?</span><p>Some tools are free, while premium products may include a trial and license activation.</p></button>
+        <button class="faq-item" type="button"><span>How does the trial work?</span><p>Trial products can include limited-time access, such as the 3-day trial shown for SyncForge.</p></button>
+        <button class="faq-item" type="button"><span>How do I buy a license?</span><p>Use the license buttons as placeholders now, then connect them to your real purchase page later.</p></button>
+        <button class="faq-item" type="button"><span>Does it work on Windows?</span><p>The products listed here are presented as Windows-ready desktop software.</p></button>
+        <button class="faq-item" type="button"><span>Are downloads hosted on GitHub?</span><p>The site is prepared for GitHub release links, with placeholder links ready to replace.</p></button>
+        <button class="faq-item" type="button"><span>Can I request support?</span><p>Yes. Use the contact section to report issues, request a license, or reach the GitHub profile.</p></button>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-panel reveal">
+        <span class="eyebrow">Support</span>
+        <h2>Need Help With A Product?</h2>
+        <p>Support email: <a href="mailto:enukasathmina@gmail.com">enukasathmina@gmail.com</a></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/EnukaSathmina" target="_blank">GitHub Profile</a>
+          <button class="btn btn-ghost open-support-modal" type="button" data-support-modal="issueModal">Report Issue</button>
+          <button class="btn btn-soft open-support-modal" type="button" data-support-modal="licenseModal">Request License</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-shell">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="brand"><span class="brand-mark"><img src="icons/ExonixLabs_Icon.png" alt="" aria-hidden="true"></span><span>Exonix Labs</span></a>
+          <span class="footer-pill">Built for performance. Designed for clarity.</span>
+          <p>Premium desktop software built for creators, gamers, developers, and power users.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="#home"><span class="footer-link-icon" aria-hidden="true">+</span>Home</a>
+          <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>Software</a>
+          <a href="#features"><span class="footer-link-icon" aria-hidden="true">+</span>Features</a>
+          <a href="#pricing"><span class="footer-link-icon" aria-hidden="true">+</span>Pricing</a>
+          <a href="#faq"><span class="footer-link-icon" aria-hidden="true">+</span>FAQ</a>
+          <a href="#contact"><span class="footer-link-icon" aria-hidden="true">+</span>Contact</a>
+        </div>
+        <div class="footer-column">
+          <h3>Products</h3>
+          <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>SyncForge</a>
+          <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>GamePulse</a>
+          <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>FrameForge</a>
+          <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>Future Products</a>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <a href="https://github.com/EnukaSathmina" target="_blank"><span class="footer-link-icon" aria-hidden="true">+</span>GitHub</a>
+          <button class="footer-link open-support-modal" type="button" data-support-modal="issueModal"><span class="footer-link-icon" aria-hidden="true">+</span>Report Issue</button>
+          <button class="footer-link open-support-modal" type="button" data-support-modal="licenseModal"><span class="footer-link-icon" aria-hidden="true">+</span>Request License</button>
+          <button class="footer-link open-support-modal" type="button" data-support-modal="waitlistModal"><span class="footer-link-icon" aria-hidden="true">+</span>Join Waitlist</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 Exonix Labs. All rights reserved.</p>
+        <p class="footer-meta">Software Distribution • Product Support • Premium Tools</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top">^</button>
+
+  <div class="modal" id="downloadModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="document">
+      <button class="modal-close" type="button" aria-label="Close modal" data-close-modal>x</button>
+      <span class="eyebrow">Download</span>
+      <h2 id="modalTitle">Product</h2>
+      <p id="modalDescription">Product details</p>
+      <div class="modal-meta">
+        <span id="modalVersion">Version</span>
+        <span id="modalStatus">Status</span>
+      </div>
+      <div class="modal-actions">
+        <a class="btn btn-primary" id="modalDirectDownload" href="#">Direct Download</a>
+        <a class="btn btn-ghost" id="modalGithubDownload" href="#">Download from GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal future-modal" id="futureProductModal" aria-hidden="true" role="dialog" aria-labelledby="futureModalTitle">
+    <div class="modal-backdrop" data-close-future-modal></div>
+    <div class="modal-card future-modal-card" role="document">
+      <button class="modal-close" type="button" aria-label="Close modal" data-close-future-modal>x</button>
+      <span class="eyebrow">Coming Soon</span>
+      <h2 id="futureModalTitle">Future Product by Exonix Labs</h2>
+      <p>This space is reserved for upcoming Exonix Labs software releases. We are currently working on new tools focused on performance, productivity, security, AI, and developer workflows.</p>
+      <div class="future-focus">
+        <span>Upcoming Focus</span>
+        <ul>
+          <li>PC optimization tools</li>
+          <li>Developer utilities</li>
+          <li>AI-powered desktop software</li>
+          <li>File management tools</li>
+          <li>Security and privacy tools</li>
+        </ul>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary open-support-modal" type="button" data-support-modal="waitlistModal">Join Waitlist</button>
+        <button class="btn btn-ghost" type="button" data-close-future-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal support-modal" id="issueModal" aria-hidden="true" role="dialog" aria-labelledby="issueModalTitle">
+    <div class="modal-backdrop" data-close-support-modal></div>
+    <div class="modal-card support-modal-card" role="document">
+      <button class="modal-close" type="button" aria-label="Close modal" data-close-support-modal>x</button>
+      <span class="eyebrow">Support</span>
+      <h2 id="issueModalTitle">Report an Issue</h2>
+      <p>Tell us what went wrong and we'll review it as soon as possible.</p>
+      <form class="support-form" action="https://formspree.io/f/xpqbozwl" method="POST" data-success-message="Thank you! Your request has been submitted.">
+        <input type="hidden" name="subject" value="Report Issue - Exonix Labs">
+        <label>
+          <span>Product Name</span>
+          <input type="text" name="product_name" required>
+        </label>
+        <label>
+          <span>Issue Title</span>
+          <input type="text" name="issue_title" required>
+        </label>
+        <label>
+          <span>Issue Description</span>
+          <textarea name="issue_description" rows="4" required></textarea>
+        </label>
+        <label>
+          <span>Steps to Reproduce</span>
+          <textarea name="steps_to_reproduce" rows="3" required></textarea>
+        </label>
+        <label>
+          <span>Your Email</span>
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          <span>Screenshot Link / Extra Details</span>
+          <textarea name="extra_details" rows="3"></textarea>
+        </label>
+        <p class="form-message" aria-live="polite"></p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" type="submit" data-submit-text="Submit Issue">Submit Issue</button>
+          <button class="btn btn-ghost" type="button" data-close-support-modal>Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal support-modal" id="licenseModal" aria-hidden="true" role="dialog" aria-labelledby="licenseModalTitle">
+    <div class="modal-backdrop" data-close-support-modal></div>
+    <div class="modal-card support-modal-card" role="document">
+      <button class="modal-close" type="button" aria-label="Close modal" data-close-support-modal>x</button>
+      <span class="eyebrow">Support</span>
+      <h2 id="licenseModalTitle">Request a License</h2>
+      <p>Send a license request for any Exonix Labs product.</p>
+      <form class="support-form" action="https://formspree.io/f/xkoypngv" method="POST" data-success-message="Thank you! Your request has been submitted.">
+        <input type="hidden" name="subject" value="License Request - Exonix Labs">
+        <label>
+          <span>Full Name</span>
+          <input type="text" name="full_name" required>
+        </label>
+        <label>
+          <span>Email Address</span>
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          <span>Product Name</span>
+          <input type="text" name="product_name" required>
+        </label>
+        <label>
+          <span>License Type</span>
+          <input type="text" name="license_type" required>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <p class="form-message" aria-live="polite"></p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" type="submit" data-submit-text="Submit Request">Submit Request</button>
+          <button class="btn btn-ghost" type="button" data-close-support-modal>Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal support-modal" id="waitlistModal" aria-hidden="true" role="dialog" aria-labelledby="waitlistModalTitle">
+    <div class="modal-backdrop" data-close-support-modal></div>
+    <div class="modal-card support-modal-card" role="document">
+      <button class="modal-close" type="button" aria-label="Close modal" data-close-support-modal>x</button>
+      <span class="eyebrow">Coming Soon</span>
+      <h2 id="waitlistModalTitle">Join the Waitlist</h2>
+      <p>Get notified when upcoming Exonix Labs software becomes available.</p>
+      <p>Sign up to join the waitlist for future Exonix Labs tools, experiments, and premium software releases.</p>
+      <form class="support-form" action="https://formspree.io/f/mgodpeza" method="POST" data-success-message="Thank you! You've joined the waitlist.">
+        <input type="hidden" name="subject" value="Waitlist Request - Exonix Labs">
+        <label>
+          <span>Full Name</span>
+          <input type="text" name="full_name" required>
+        </label>
+        <label>
+          <span>Email Address</span>
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          <span>Interested Product</span>
+          <input type="text" name="interested_product" required>
+        </label>
+        <label>
+          <span>Interest Type</span>
+          <select name="interest_type" required>
+            <option value="" selected disabled>Select an option</option>
+            <option value="General Updates">General Updates</option>
+            <option value="Early Access">Early Access</option>
+            <option value="Beta Testing">Beta Testing</option>
+            <option value="Product Launch Notification">Product Launch Notification</option>
+          </select>
+        </label>
+        <label>
+          <span>Message (optional)</span>
+          <textarea name="message" rows="4"></textarea>
+        </label>
+        <p class="form-message" aria-live="polite"></p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" type="submit" data-submit-text="Submit Waitlist Request">Submit Waitlist Request</button>
+          <button class="btn btn-ghost" type="button" data-close-support-modal>Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
