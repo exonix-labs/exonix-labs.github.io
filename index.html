@@ -14,6 +14,12 @@
 </head>
 <body>
   <canvas id="particleCanvas" aria-hidden="true"></canvas>
+  <div class="site-loader" aria-hidden="true">
+    <div class="loader-mark"><img src="icons/ExonixLabs_Icon.png" alt=""></div>
+    <strong>Exonix Labs</strong>
+    <span>Loading premium software hub...</span>
+    <i></i>
+  </div>
 
   <header class="site-header" id="top">
     <nav class="navbar" aria-label="Main navigation">
@@ -101,23 +107,84 @@
       </div>
     </section>
 
-    <section class="stats section compact" aria-label="Software hub statistics">
-      <div class="stats-grid">
+    <section class="section built-for" aria-labelledby="builtForTitle">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Built For</span>
+        <h2 id="builtForTitle">Built for creators, gamers, developers, and power users.</h2>
+        <p>Exonix Labs creates focused desktop tools designed for speed, clarity, performance, and everyday workflows.</p>
+      </div>
+      <div class="audience-grid">
+        <article class="audience-card reveal">
+          <span class="audience-icon" aria-hidden="true">CR</span>
+          <h3>Creators</h3>
+          <p>Tools for editing, enhancing, rendering, and managing creative workflows.</p>
+        </article>
+        <article class="audience-card reveal">
+          <span class="audience-icon" aria-hidden="true">GM</span>
+          <h3>Gamers</h3>
+          <p>Utilities built for performance-focused setups, gaming dashboards, and optimization workflows.</p>
+        </article>
+        <article class="audience-card reveal">
+          <span class="audience-icon" aria-hidden="true">DV</span>
+          <h3>Developers</h3>
+          <p>Clean software experiences, release systems, and tools made for technical users.</p>
+        </article>
+        <article class="audience-card reveal">
+          <span class="audience-icon" aria-hidden="true">PU</span>
+          <h3>Power Users</h3>
+          <p>Premium desktop utilities for productivity, automation, backup, and system control.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stats section compact product-status" aria-labelledby="productStatusTitle">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Product Status</span>
+        <h2 id="productStatusTitle">Software Library Overview</h2>
+        <p>A quick snapshot of Exonix Labs products, downloads, platform readiness, and release status.</p>
+      </div>
+      <div class="stats-grid overview-stats">
         <div class="stat-card reveal">
-          <strong data-count="4">0</strong>
+          <strong data-count="4" data-suffix="+">0</strong>
           <span>Software Products</span>
+          <p>Total products shown across released and upcoming tools.</p>
         </div>
         <div class="stat-card reveal">
-          <strong data-count="1000">0</strong>
+          <strong data-count="1000" data-suffix="+">0</strong>
           <span>Downloads</span>
+          <p>Growing interest across the Exonix Labs software hub.</p>
         </div>
         <div class="stat-card reveal">
           <strong>Windows</strong>
           <span>Ready</span>
+          <p>Desktop-first experiences designed for Windows users.</p>
         </div>
         <div class="stat-card reveal">
           <strong>Premium</strong>
           <span>UI Experience</span>
+          <p>Dark glassmorphism interface with polished product flows.</p>
+        </div>
+      </div>
+      <div class="availability-heading reveal">
+        <h3>Product Availability</h3>
+        <p>Current release categories across the Exonix Labs software library.</p>
+      </div>
+      <div class="availability-grid">
+        <div class="availability-card reveal">
+          <strong data-count="3">0</strong>
+          <span>Active Products</span>
+        </div>
+        <div class="availability-card reveal">
+          <strong data-count="1">0</strong>
+          <span>Free Tools</span>
+        </div>
+        <div class="availability-card reveal">
+          <strong data-count="2">0</strong>
+          <span>Premium Tools</span>
+        </div>
+        <div class="availability-card reveal">
+          <strong data-count="1">0</strong>
+          <span>Coming Soon</span>
         </div>
       </div>
     </section>
@@ -358,7 +425,7 @@
       <div class="release-list reveal">
         <div><span></span><strong>SyncForge by Exonix Labs v1.0 released</strong><small>Premium backup suite launch</small></div>
         <div><span></span><strong>GamePulse by Exonix Labs v1.0 released</strong><small>Gaming utility dashboard launch</small></div>
-        <div><span></span><strong>FrameForge by Exonix Labs v1.0 released</strong><small>Free motion blur video rendering tool</small></div>
+        <div><span></span><strong>FrameForge by Exonix Labs v1.4 released</strong><small>Free motion blur video rendering tool</small></div>
       </div>
     </section>
 

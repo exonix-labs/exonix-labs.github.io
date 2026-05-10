@@ -17,10 +17,20 @@ const futureModal = document.querySelector("#futureProductModal");
 const supportModals = document.querySelectorAll(".support-modal");
 const backToTop = document.querySelector(".back-to-top");
 const canvas = document.querySelector("#particleCanvas");
-const ctx = canvas.getContext("2d");
+const ctx = canvas?.getContext("2d");
+const loader = document.querySelector(".site-loader");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const canUsePointerHover = window.matchMedia("(hover: hover) and (pointer: fine)");
 
 let activeFilter = "All";
 let particles = [];
+let particleFrame = null;
+
+window.addEventListener("load", () => {
+  window.setTimeout(() => {
+    loader?.classList.add("hidden");
+  }, prefersReducedMotion.matches ? 80 : 900);
+});
 
 navToggle.addEventListener("click", () => {
   const isOpen = navMenu.classList.toggle("open");
@@ -92,23 +102,25 @@ viewFreeToolsBtn.addEventListener("click", (event) => {
   softwareSection.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-softwareCards.forEach((card) => {
-  card.addEventListener("mousemove", (event) => {
-    const rect = card.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    const rotateX = (event.clientY - rect.top - rect.height / 2) / -24;
-    const rotateY = (event.clientX - rect.left - rect.width / 2) / 24;
+if (canUsePointerHover.matches && !prefersReducedMotion.matches) {
+  softwareCards.forEach((card) => {
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      const rotateX = (event.clientY - rect.top - rect.height / 2) / -34;
+      const rotateY = (event.clientX - rect.left - rect.width / 2) / 34;
 
-    card.style.setProperty("--mouse-x", `${x}%`);
-    card.style.setProperty("--mouse-y", `${y}%`);
-    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-  });
+      card.style.setProperty("--mouse-x", `${x}%`);
+      card.style.setProperty("--mouse-y", `${y}%`);
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
   });
-});
+}
 
 document.querySelectorAll(".open-modal").forEach((button) => {
   button.addEventListener("click", () => {
@@ -240,7 +252,7 @@ const counterObserver = new IntersectionObserver((entries) => {
     if (!entry.isIntersecting) return;
 
     const target = Number(entry.target.dataset.count);
-    const suffix = target >= 1000 ? "+" : "+";
+    const suffix = entry.target.dataset.suffix || "";
     const duration = 1200;
     const start = performance.now();
 
@@ -270,19 +282,27 @@ backToTop.addEventListener("click", () => {
 });
 
 function resizeCanvas() {
+  if (!canvas || !ctx || prefersReducedMotion.matches) return;
+
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  particles = Array.from({ length: Math.min(80, Math.floor(window.innerWidth / 18)) }, () => ({
+  const isMobile = window.innerWidth <= 768;
+  const density = isMobile ? 38 : 70;
+  const spacing = isMobile ? 34 : 22;
+
+  particles = Array.from({ length: Math.min(density, Math.floor(window.innerWidth / spacing)) }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    r: Math.random() * 1.8 + 0.4,
-    vx: (Math.random() - 0.5) * 0.28,
-    vy: (Math.random() - 0.5) * 0.28,
-    alpha: Math.random() * 0.6 + 0.2
+    r: Math.random() * 1.35 + 0.35,
+    vx: (Math.random() - 0.5) * (isMobile ? 0.12 : 0.2),
+    vy: (Math.random() - 0.5) * (isMobile ? 0.12 : 0.2),
+    alpha: Math.random() * 0.26 + 0.12
   }));
 }
 
 function drawParticles() {
+  if (!canvas || !ctx || prefersReducedMotion.matches) return;
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   particles.forEach((particle, index) => {
@@ -294,8 +314,11 @@ function drawParticles() {
 
     ctx.beginPath();
     ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = "rgba(69, 230, 255, 0.24)";
     ctx.fillStyle = `rgba(69, 230, 255, ${particle.alpha})`;
     ctx.fill();
+    ctx.shadowBlur = 0;
 
     for (let next = index + 1; next < particles.length; next += 1) {
       const other = particles[next];
@@ -310,10 +333,25 @@ function drawParticles() {
     }
   });
 
-  requestAnimationFrame(drawParticles);
+  particleFrame = requestAnimationFrame(drawParticles);
 }
 
-resizeCanvas();
-drawParticles();
-window.addEventListener("resize", resizeCanvas);
+if (!prefersReducedMotion.matches) {
+  resizeCanvas();
+  drawParticles();
+  window.addEventListener("resize", resizeCanvas);
+}
+
+prefersReducedMotion.addEventListener("change", () => {
+  if (prefersReducedMotion.matches) {
+    if (particleFrame) cancelAnimationFrame(particleFrame);
+    if (canvas && ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles = [];
+    return;
+  }
+
+  resizeCanvas();
+  drawParticles();
+});
+
 updateActiveNavLink();
