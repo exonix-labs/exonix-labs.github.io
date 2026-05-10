@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 112px;
   scrollbar-color: #45e6ff #05070d;
   scrollbar-width: thin;
   overflow-x: hidden;
@@ -211,14 +212,20 @@ input {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  right: 0;
+  left: 0;
+  z-index: 1000;
   padding: 14px clamp(16px, 4vw, 56px);
   backdrop-filter: blur(22px) saturate(150%);
   -webkit-backdrop-filter: blur(22px) saturate(150%);
   background: linear-gradient(180deg, rgba(7, 13, 24, 0.84), rgba(7, 13, 24, 0.58));
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.26);
+}
+
+main {
+  padding-top: 92px;
 }
 
 .site-header::after {
@@ -769,7 +776,7 @@ p {
 }
 
 .audience-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
 }
 
 .availability-grid {
@@ -1052,6 +1059,26 @@ p {
   opacity: 1;
 }
 
+.software-card.flowfetch-card {
+  border-color: rgba(69, 230, 255, 0.24);
+}
+
+.software-card.flowfetch-card::after {
+  position: absolute;
+  inset: auto 22px 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(69, 230, 255, 0.9), rgba(31, 111, 255, 0.56), transparent);
+  opacity: 0.72;
+}
+
+.software-card.flowfetch-card:hover {
+  border-color: rgba(69, 230, 255, 0.64);
+  box-shadow:
+    0 26px 78px rgba(69, 230, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
 .software-card .software-icon {
   transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
 }
@@ -1081,6 +1108,12 @@ p {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 20px;
+}
+
+.card-tagline {
+  margin-bottom: 10px;
+  color: var(--cyan);
+  font-weight: 800;
 }
 
 .badges {
@@ -1123,6 +1156,22 @@ p {
   background: linear-gradient(135deg, #45e6ff, #8f7cff 54%, #7dffb2);
 }
 
+.software-icon.flowfetch {
+  background: transparent;
+  box-shadow: 0 0 18px rgba(69, 230, 255, 0.3);
+}
+
+.software-icon.flowfetch.large {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  border-radius: 18px;
+}
+
+.software-icon.flowfetch img {
+  filter: drop-shadow(0 0 8px rgba(69, 230, 255, 0.44));
+}
+
 .software-icon.future {
   color: var(--text);
   background: rgba(255, 255, 255, 0.1);
@@ -1148,6 +1197,67 @@ p {
 
 .software-icon.frame img {
   filter: drop-shadow(0 0 8px rgba(143, 124, 255, 0.42));
+}
+
+.product-detail {
+  position: relative;
+}
+
+.product-detail-shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.84fr) minmax(0, 1.16fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.product-detail-copy {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid rgba(69, 230, 255, 0.22);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(69, 230, 255, 0.18), transparent 16rem),
+    linear-gradient(145deg, rgba(10, 18, 31, 0.94), rgba(255, 255, 255, 0.035));
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.26);
+}
+
+.product-detail-copy::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(135deg, rgba(69, 230, 255, 0.12), transparent 36%, rgba(31, 111, 255, 0.1));
+}
+
+.product-detail-copy > * {
+  position: relative;
+  z-index: 1;
+}
+
+.product-detail-copy h3 {
+  margin: 0 0 14px;
+  max-width: 680px;
+  color: var(--text);
+  font-size: clamp(1.2rem, 2.1vw, 1.85rem);
+  line-height: 1.18;
+}
+
+.product-detail-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.flowfetch-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.flowfetch-features .feature-card {
+  padding: 20px;
+  border-color: rgba(69, 230, 255, 0.16);
 }
 
 .featured-product {
@@ -1916,7 +2026,8 @@ p {
   }
 
   .hero,
-  .featured-product {
+  .featured-product,
+  .product-detail-shell {
     grid-template-columns: 1fr;
   }
 
@@ -1942,6 +2053,7 @@ p {
 
   .software-grid,
   .audience-grid,
+  .flowfetch-features,
   .feature-grid,
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1973,6 +2085,10 @@ p {
 @media (max-width: 768px) {
   .site-header {
     padding: 10px 12px;
+  }
+
+  main {
+    padding-top: 76px;
   }
 
   .nav-toggle {
@@ -2166,6 +2282,7 @@ p {
   .audience-grid,
   .availability-grid,
   .software-grid,
+  .flowfetch-features,
   .feature-grid,
   .pricing-grid,
   .timeline {
@@ -2687,7 +2804,8 @@ p {
   }
 
   .hero,
-  .featured-product {
+  .featured-product,
+  .product-detail-shell {
     align-items: start;
   }
 

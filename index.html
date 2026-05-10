@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Exonix Labs is a premium software lab for desktop tools, productivity, gaming utilities, video tools, and performance software.">
+  <meta name="keywords" content="Exonix Labs, FlowFetch, download manager, desktop download manager, Exonix Labs software, Python PySide6 app, SyncForge, GamePulse, FrameForge">
   <title>Exonix Labs — Premium Desktop Software Hub</title>
   <link rel="icon" type="image/png" href="icons/ExonixLabs_Icon.png">
   <link rel="apple-touch-icon" href="icons/ExonixLabs_Icon.png">
@@ -110,7 +111,7 @@
     <section class="section built-for" aria-labelledby="builtForTitle">
       <div class="section-heading reveal">
         <span class="eyebrow">Built For</span>
-        <h2 id="builtForTitle">Built for creators, gamers, developers, and power users.</h2>
+        <h2 id="builtForTitle">Built for creators, gamers, developers, power users, and everyday users.</h2>
         <p>Exonix Labs creates focused desktop tools designed for speed, clarity, performance, and everyday workflows.</p>
       </div>
       <div class="audience-grid">
@@ -133,6 +134,11 @@
           <span class="audience-icon" aria-hidden="true">PU</span>
           <h3>Power Users</h3>
           <p>Premium desktop utilities for productivity, automation, backup, and system control.</p>
+        </article>
+        <article class="audience-card reveal">
+          <span class="audience-icon" aria-hidden="true">EU</span>
+          <h3>Everyday Users</h3>
+          <p>Simple, modern tools for direct downloads, clean queues, and organized daily workflows.</p>
         </article>
       </div>
     </section>
@@ -171,11 +177,11 @@
       </div>
       <div class="availability-grid">
         <div class="availability-card reveal">
-          <strong data-count="3">0</strong>
+          <strong data-count="4">0</strong>
           <span>Active Products</span>
         </div>
         <div class="availability-card reveal">
-          <strong data-count="1">0</strong>
+          <strong data-count="2">0</strong>
           <span>Free Tools</span>
         </div>
         <div class="availability-card reveal">
@@ -206,6 +212,7 @@
           <button class="tab" type="button" data-filter="Backup">Backup</button>
           <button class="tab" type="button" data-filter="Gaming">Gaming</button>
           <button class="tab" type="button" data-filter="Video">Video</button>
+          <button class="tab" type="button" data-filter="Desktop Utility">Desktop Utility</button>
           <button class="tab" type="button" data-filter="Free">Free</button>
           <button class="tab" type="button" data-filter="Coming Soon">Coming Soon</button>
         </div>
@@ -257,6 +264,22 @@
           </div>
         </article>
 
+        <article class="software-card reveal flowfetch-card" data-name="FlowFetch" data-category="Desktop Utility Free Tool Under Maintenance Usable Download Manager Python PySide6" data-version="v1.0" data-status="Free / Under Maintenance / Usable" data-direct-download="https://github.com/EnukaSathmina/FlowFetch/releases/download/v1.0/FlowFetch.exe" data-github-download="https://github.com/EnukaSathmina/FlowFetch">
+          <div class="card-top">
+            <span class="software-icon flowfetch"><img src="icons/FlowFetch_Icon.png" alt="" aria-hidden="true"></span>
+            <div class="badges"><span>Free</span><span>Under Maintenance</span><span>Usable</span><span>Desktop Utility</span><span>v1.0</span></div>
+          </div>
+          <h3>FlowFetch</h3>
+          <p class="card-tagline">Modern High-Speed Download Manager</p>
+          <p>FlowFetch is a modern desktop download manager designed for fast, organized, and reliable direct-file downloads with live progress tracking, queue control, and a clean dark interface.</p>
+          <div class="tags"><span>Free Tool</span><span>Desktop Utility</span><span>Download Manager</span><span>Python</span></div>
+          <div class="card-actions">
+            <button class="btn btn-primary open-modal" type="button">Download</button>
+            <a class="btn btn-soft" href="https://github.com/EnukaSathmina/FlowFetch/releases">Release Notes</a>
+            <a class="btn btn-ghost" href="#flowfetch">Learn More</a>
+          </div>
+        </article>
+
         <article class="software-card reveal coming" data-name="Future Product" data-category="New Upcoming Software Coming Soon" data-version="TBA" data-status="In Development" data-direct-download="#" data-github-download="#">
           <div class="card-top">
             <span class="software-icon future"><img src="icons/ExonixLabs_Icon.png" alt="" aria-hidden="true"></span>
@@ -270,6 +293,37 @@
             <a class="btn btn-ghost open-future-modal" href="#futureProductModal">Learn More</a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="section product-detail flowfetch-detail" id="flowfetch" aria-labelledby="flowfetchTitle">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Free Tool / Under Maintenance / Usable</span>
+        <h2 id="flowfetchTitle">FlowFetch</h2>
+        <p>Modern High-Speed Download Manager</p>
+      </div>
+      <div class="product-detail-shell reveal">
+        <div class="product-detail-copy">
+          <span class="software-icon flowfetch large"><img src="icons/FlowFetch_Icon.png" alt="" aria-hidden="true"></span>
+          <h3>A clean desktop download manager for direct-file downloads, queue control, live progress tracking, and organized download history.</h3>
+          <p>FlowFetch is free software that helps users manage direct file downloads with a clean premium UI, real-time speed and ETA tracking, queue controls, download history, settings, and reliable error handling. It is currently under maintenance, but remains usable for everyday direct-file download workflows.</p>
+          <div class="tags">
+            <span>Python</span>
+            <span>PySide6</span>
+            <span>SQLite</span>
+            <span>requests</span>
+            <span>qtawesome</span>
+            <span>PyInstaller</span>
+          </div>
+        </div>
+        <div class="flowfetch-features">
+          <article class="feature-card reveal"><span>FD</span><h3>Fast Direct Downloads</h3><p>Direct http:// and https:// file downloads with a focused desktop workflow.</p></article>
+          <article class="feature-card reveal"><span>LS</span><h3>Live Speed Tracking</h3><p>Real-time progress, speed, ETA, and download status feedback.</p></article>
+          <article class="feature-card reveal"><span>QC</span><h3>Queue Control</h3><p>Pause, resume, cancel, retry, and organize downloads from a clean queue.</p></article>
+          <article class="feature-card reveal"><span>DH</span><h3>Download History</h3><p>Keep past downloads visible and organized for everyday use.</p></article>
+          <article class="feature-card reveal"><span>MS</span><h3>Modern Settings</h3><p>A polished settings page for practical download manager controls.</p></article>
+          <article class="feature-card reveal"><span>ES</span><h3>Error-Safe Downloading</h3><p>Friendly handling for invalid links, failed requests, and retry paths.</p></article>
+        </div>
       </div>
     </section>
 
@@ -423,6 +477,7 @@
         <h2>Latest Timeline</h2>
       </div>
       <div class="release-list reveal">
+        <div><span></span><strong>FlowFetch v1.0 under maintenance</strong><small>Usable modern high-speed desktop download manager</small></div>
         <div><span></span><strong>SyncForge by Exonix Labs v1.0 released</strong><small>Premium backup suite launch</small></div>
         <div><span></span><strong>GamePulse by Exonix Labs v1.0 released</strong><small>Gaming utility dashboard launch</small></div>
         <div><span></span><strong>FrameForge by Exonix Labs v1.5 released</strong><small>Free motion blur video rendering tool</small></div>
@@ -480,6 +535,7 @@
           <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>SyncForge</a>
           <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>GamePulse</a>
           <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>FrameForge</a>
+          <a href="#flowfetch"><span class="footer-link-icon" aria-hidden="true">+</span>FlowFetch</a>
           <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>Future Products</a>
         </div>
         <div class="footer-column">
