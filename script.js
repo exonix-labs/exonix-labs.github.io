@@ -14,6 +14,7 @@ const modalStatus = document.querySelector("#modalStatus");
 const modalDirectDownload = document.querySelector("#modalDirectDownload");
 const modalGithubDownload = document.querySelector("#modalGithubDownload");
 const futureModal = document.querySelector("#futureProductModal");
+const clearDeskModal = document.querySelector("#clearDeskModal");
 const supportModals = document.querySelectorAll(".support-modal");
 const backToTop = document.querySelector(".back-to-top");
 const canvas = document.querySelector("#particleCanvas");
@@ -126,7 +127,7 @@ document.querySelectorAll(".open-modal").forEach((button) => {
   button.addEventListener("click", () => {
     const card = button.closest(".software-card");
     modalTitle.textContent = card.dataset.name;
-    modalDescription.textContent = card.querySelector("p").textContent;
+    modalDescription.textContent = card.querySelector(".card-description")?.textContent || card.querySelector("p").textContent;
     modalVersion.textContent = card.dataset.version;
     modalStatus.textContent = card.dataset.status;
     modalDirectDownload.href = card.dataset.directDownload || "#";
@@ -155,6 +156,20 @@ document.querySelectorAll("[data-close-future-modal]").forEach((item) => {
   item.addEventListener("click", () => {
     futureModal.classList.remove("active");
     futureModal.setAttribute("aria-hidden", "true");
+  });
+});
+
+document.querySelectorAll(".open-cleardesk-modal").forEach((button) => {
+  button.addEventListener("click", () => {
+    clearDeskModal.classList.add("active");
+    clearDeskModal.setAttribute("aria-hidden", "false");
+  });
+});
+
+document.querySelectorAll("[data-close-cleardesk-modal]").forEach((item) => {
+  item.addEventListener("click", () => {
+    clearDeskModal.classList.remove("active");
+    clearDeskModal.setAttribute("aria-hidden", "true");
   });
 });
 
@@ -223,6 +238,8 @@ document.addEventListener("keydown", (event) => {
     modal.setAttribute("aria-hidden", "true");
     futureModal.classList.remove("active");
     futureModal.setAttribute("aria-hidden", "true");
+    clearDeskModal.classList.remove("active");
+    clearDeskModal.setAttribute("aria-hidden", "true");
     supportModals.forEach((supportModal) => {
       supportModal.classList.remove("active");
       supportModal.setAttribute("aria-hidden", "true");
