@@ -26,6 +26,7 @@ const canUsePointerHover = window.matchMedia("(hover: hover) and (pointer: fine)
 let activeFilter = "All";
 let particles = [];
 let particleFrame = null;
+let particlePixelRatio = 1;
 
 window.addEventListener("load", () => {
   window.setTimeout(() => {
@@ -301,50 +302,70 @@ backToTop.addEventListener("click", () => {
 function resizeCanvas() {
   if (!canvas || !ctx || prefersReducedMotion.matches) return;
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const isMobile = window.innerWidth <= 768;
-  const density = isMobile ? 38 : 70;
-  const spacing = isMobile ? 34 : 22;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const isMobile = width <= 640;
+  const isTablet = width > 640 && width <= 1024;
+  const maxParticles = isMobile ? 30 : isTablet ? 50 : 96;
+  const spacing = isMobile ? 15 : isTablet ? 17 : 14;
 
-  particles = Array.from({ length: Math.min(density, Math.floor(window.innerWidth / spacing)) }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.35 + 0.35,
-    vx: (Math.random() - 0.5) * (isMobile ? 0.12 : 0.2),
-    vy: (Math.random() - 0.5) * (isMobile ? 0.12 : 0.2),
-    alpha: Math.random() * 0.26 + 0.12
+  particlePixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(width * particlePixelRatio);
+  canvas.height = Math.floor(height * particlePixelRatio);
+  canvas.style.width = `${width}px`;
+  canvas.style.height = `${height}px`;
+  ctx.setTransform(particlePixelRatio, 0, 0, particlePixelRatio, 0, 0);
+
+  const particleCount = Math.min(maxParticles, Math.max(isMobile ? 22 : isTablet ? 38 : 70, Math.floor(width / spacing)));
+  const maxSpeed = isMobile ? 0.075 : isTablet ? 0.1 : 0.14;
+
+  particles = Array.from({ length: particleCount }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    r: Math.random() * (isMobile ? 1.05 : 1.45) + 0.45,
+    vx: (Math.random() - 0.5) * maxSpeed,
+    vy: (Math.random() - 0.5) * maxSpeed,
+    alpha: Math.random() * (isMobile ? 0.18 : 0.24) + (isMobile ? 0.18 : 0.2),
+    hue: Math.random() > 0.55 ? "69, 230, 255" : "143, 124, 255"
   }));
 }
 
 function drawParticles() {
   if (!canvas || !ctx || prefersReducedMotion.matches) return;
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const isMobile = width <= 640;
+  const lineDistance = isMobile ? 82 : 126;
+  const lineAlpha = isMobile ? 0.06 : 0.105;
+
+  ctx.clearRect(0, 0, width, height);
 
   particles.forEach((particle, index) => {
     particle.x += particle.vx;
     particle.y += particle.vy;
 
-    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+    if (particle.x < -8) particle.x = width + 8;
+    if (particle.x > width + 8) particle.x = -8;
+    if (particle.y < -8) particle.y = height + 8;
+    if (particle.y > height + 8) particle.y = -8;
 
     ctx.beginPath();
     ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = "rgba(69, 230, 255, 0.24)";
-    ctx.fillStyle = `rgba(69, 230, 255, ${particle.alpha})`;
+    ctx.shadowBlur = isMobile ? 7 : 12;
+    ctx.shadowColor = `rgba(${particle.hue}, 0.32)`;
+    ctx.fillStyle = `rgba(${particle.hue}, ${particle.alpha})`;
     ctx.fill();
     ctx.shadowBlur = 0;
 
     for (let next = index + 1; next < particles.length; next += 1) {
       const other = particles[next];
       const distance = Math.hypot(particle.x - other.x, particle.y - other.y);
-      if (distance < 120) {
+      if (distance < lineDistance) {
         ctx.beginPath();
         ctx.moveTo(particle.x, particle.y);
         ctx.lineTo(other.x, other.y);
-        ctx.strokeStyle = `rgba(125, 255, 178, ${0.08 * (1 - distance / 120)})`;
+        ctx.strokeStyle = `rgba(69, 230, 255, ${lineAlpha * (1 - distance / lineDistance)})`;
         ctx.stroke();
       }
     }
