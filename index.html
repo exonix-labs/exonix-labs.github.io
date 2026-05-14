@@ -108,6 +108,73 @@
       </div>
     </section>
 
+    <section class="section ecosystem-section" aria-labelledby="ecosystemTitle">
+      <div class="section-heading reveal">
+        <span class="eyebrow">ECOSYSTEM</span>
+        <h2 id="ecosystemTitle">Connected Software Ecosystem</h2>
+        <p>Exonix Labs brings together desktop tools for backup, gaming performance, video processing, productivity, and future software releases.</p>
+      </div>
+
+      <div class="ecosystem-panel reveal" aria-label="Animated Exonix Labs software ecosystem map">
+        <div class="ecosystem-map">
+          <div class="ecosystem-grid" aria-hidden="true"></div>
+          <svg class="ecosystem-lines" viewBox="0 0 1000 560" preserveAspectRatio="none" role="img" aria-label="Connections between Exonix Labs software and platform services">
+            <defs>
+              <linearGradient id="ecosystemLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#45e6ff" stop-opacity="0.72" />
+                <stop offset="55%" stop-color="#7dffb2" stop-opacity="0.48" />
+                <stop offset="100%" stop-color="#8f7cff" stop-opacity="0.62" />
+              </linearGradient>
+              <filter id="ecosystemGlow">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <g class="ecosystem-paths">
+              <path d="M500 280 C380 210 300 150 210 118" />
+              <path d="M500 280 C620 200 704 148 810 116" />
+              <path d="M500 280 C368 296 260 332 148 402" />
+              <path d="M500 280 C636 292 746 330 858 408" />
+              <path class="optional-path" d="M500 280 C456 190 440 128 436 64" />
+              <path class="optional-path" d="M500 280 C548 370 574 454 606 510" />
+              <path class="optional-path" d="M500 280 C400 372 334 448 276 508" />
+            </g>
+
+            <g class="ecosystem-travelers" filter="url(#ecosystemGlow)">
+              <circle r="4"><animateMotion dur="8.6s" repeatCount="indefinite" path="M500 280 C380 210 300 150 210 118" /></circle>
+              <circle r="4"><animateMotion dur="9.8s" begin="-2.4s" repeatCount="indefinite" path="M500 280 C620 200 704 148 810 116" /></circle>
+              <circle r="3.5"><animateMotion dur="10.4s" begin="-4.8s" repeatCount="indefinite" path="M500 280 C368 296 260 332 148 402" /></circle>
+              <circle r="3.5"><animateMotion dur="9.2s" begin="-1.6s" repeatCount="indefinite" path="M500 280 C636 292 746 330 858 408" /></circle>
+              <circle class="optional-traveler" r="3.2"><animateMotion dur="11.5s" begin="-5.5s" repeatCount="indefinite" path="M500 280 C456 190 440 128 436 64" /></circle>
+              <circle class="optional-traveler" r="3.2"><animateMotion dur="12s" begin="-3.2s" repeatCount="indefinite" path="M500 280 C548 370 574 454 606 510" /></circle>
+            </g>
+          </svg>
+
+          <div class="ecosystem-node ecosystem-node-center" style="--x: 50%; --y: 50%;">
+            <span><img src="icons/ExonixLabs_Icon.png" alt="" aria-hidden="true"></span>
+            <strong>Exonix Labs</strong>
+          </div>
+          <div class="ecosystem-node ecosystem-node-sync" style="--x: 21%; --y: 21%;"><span></span><strong>SyncForge</strong></div>
+          <div class="ecosystem-node ecosystem-node-game" style="--x: 81%; --y: 21%;"><span></span><strong>GamePulse</strong></div>
+          <div class="ecosystem-node ecosystem-node-frame" style="--x: 16%; --y: 71%;"><span></span><strong>FrameForge</strong></div>
+          <div class="ecosystem-node ecosystem-node-future" style="--x: 78%; --y: 68%;"><span></span><strong>Future Tools</strong></div>
+          <div class="ecosystem-node ecosystem-node-support optional-node" style="--x: 44%; --y: 12%;"><span></span><strong>Support</strong></div>
+          <div class="ecosystem-node ecosystem-node-github optional-node" style="--x: 64%; --y: 90%;"><span></span><strong>GitHub Releases</strong></div>
+          <div class="ecosystem-node ecosystem-node-license optional-node" style="--x: 31%; --y: 88%;"><span></span><strong>License System</strong></div>
+        </div>
+
+        <div class="ecosystem-summary">
+          <span>PRODUCT SIGNALS</span>
+          <p>Backup, gaming performance, video tools, licensing, releases, support, and future experiments connected through one Exonix Labs hub.</p>
+        </div>
+
+      </div>
+    </section>
+
     <section class="section built-for" aria-labelledby="builtForTitle">
       <div class="section-heading reveal">
         <span class="eyebrow">Built For</span>
@@ -151,7 +218,7 @@
       </div>
       <div class="stats-grid overview-stats">
         <div class="stat-card reveal">
-          <strong data-count="6" data-suffix="+">0</strong>
+          <strong data-count="5" data-suffix="+">0</strong>
           <span>Software Products</span>
           <p>Total products shown across released and upcoming tools.</p>
         </div>
@@ -216,7 +283,6 @@
           <button class="tab" type="button" data-filter="Utility">Utility</button>
           <button class="tab" type="button" data-filter="Free + Pro">Free + Pro</button>
           <button class="tab" type="button" data-filter="Free">Free</button>
-          <button class="tab" type="button" data-filter="Coming Soon">Coming Soon</button>
         </div>
       </div>
 
@@ -301,20 +367,36 @@
           </div>
         </article>
 
-        <article class="software-card reveal coming" data-name="Future Product" data-category="New Upcoming Software Coming Soon" data-version="TBA" data-status="In Development" data-direct-download="#" data-github-download="#">
-          <div class="card-top">
-            <span class="software-icon future"><img src="icons/ExonixLabs_Icon.png" alt="" aria-hidden="true"></span>
-            <div class="badges"><span>TBA</span><span>In Development</span></div>
+      </div>
+    </section>
+
+    <section class="section future-software-section" id="future-software" aria-labelledby="futureSoftwareTitle">
+      <div class="section-heading reveal">
+        <span class="eyebrow">COMING SOON</span>
+        <h2 id="futureSoftwareTitle">Future Exonix Labs Software</h2>
+        <p>New tools are being planned for performance, productivity, automation, AI, security, and developer workflows.</p>
+      </div>
+
+      <div class="future-software-banner reveal">
+        <div class="future-software-accent" aria-hidden="true"></div>
+        <div class="future-software-copy">
+          <span class="software-icon future-software-logo"><img src="icons/ExonixLabs_Icon.png" alt="" aria-hidden="true"></span>
+          <div>
+            <h3>Upcoming Exonix Labs Software</h3>
+            <p>We are working on new desktop tools and experiments designed for creators, gamers, developers, and power users. Join the waitlist to get updates about future releases and early access opportunities.</p>
           </div>
-          <h3>Future Product</h3>
-          <p class="card-tagline">Upcoming Exonix Labs Software</p>
-          <p class="card-description">A coming soon space for upcoming tools, experiments, and new premium desktop software releases.</p>
-          <div class="tags"><span>New</span><span>Upcoming</span><span>Software</span></div>
-          <div class="card-actions">
+        </div>
+        <div class="future-software-actions">
+          <div class="future-status-badges" aria-label="Future software status">
+            <span>In Development</span>
+            <span>Future Release</span>
+            <span>Early Access Soon</span>
+          </div>
+          <div class="future-button-row">
             <button class="btn btn-primary open-support-modal" type="button" data-support-modal="waitlistModal">Join Waitlist</button>
-            <a class="btn btn-ghost open-future-modal" href="#futureProductModal">Learn More</a>
+            <button class="btn btn-ghost open-future-modal" type="button">Learn More</button>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
@@ -630,7 +712,7 @@
           <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>GamePulse</a>
           <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>FrameForge</a>
           <a href="#flowfetch"><span class="footer-link-icon" aria-hidden="true">+</span>FlowFetch</a>
-          <a href="#software"><span class="footer-link-icon" aria-hidden="true">+</span>Future Products</a>
+          <a href="#future-software"><span class="footer-link-icon" aria-hidden="true">+</span>Future Products</a>
         </div>
         <div class="footer-column">
           <h3>Support</h3>

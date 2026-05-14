@@ -385,11 +385,6 @@ main {
   flex: 1 1 0;
 }
 
-.software-card.coming .card-actions .btn {
-  flex: 0 1 auto;
-  min-width: 124px;
-}
-
 .nav-menu {
   position: relative;
   gap: 6px;
@@ -621,6 +616,13 @@ h1 {
   letter-spacing: 0;
 }
 
+.hero-content h1 {
+  max-width: 820px;
+  font-size: clamp(3.6rem, 6vw, 5.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+}
+
 .gradient-text {
   color: transparent;
   background: linear-gradient(90deg, var(--cyan), var(--purple) 58%, #d9d2ff);
@@ -707,6 +709,254 @@ p {
   position: relative;
   inset: auto;
   min-height: 430px;
+}
+
+.ecosystem-section {
+  padding-top: 46px;
+}
+
+.ecosystem-panel {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+  gap: 26px;
+  align-items: stretch;
+  min-height: 0;
+  padding: 28px;
+  border: 1px solid rgba(151, 198, 255, 0.18);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(69, 230, 255, 0.14), transparent 18rem),
+    radial-gradient(circle at 78% 16%, rgba(143, 124, 255, 0.16), transparent 20rem),
+    radial-gradient(circle at 50% 80%, rgba(125, 255, 178, 0.08), transparent 20rem),
+    linear-gradient(145deg, rgba(10, 18, 32, 0.84), rgba(4, 9, 19, 0.72));
+  box-shadow:
+    var(--shadow),
+    0 0 64px rgba(69, 230, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(22px) saturate(145%);
+}
+
+.ecosystem-panel::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(69, 230, 255, 0.1), transparent 34%, rgba(143, 124, 255, 0.08));
+  opacity: 0.82;
+}
+
+.ecosystem-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(69, 230, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 124, 255, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 82%);
+  opacity: 0.72;
+}
+
+.ecosystem-map {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  min-height: 560px;
+  min-width: 0;
+  border: 1px solid rgba(151, 198, 255, 0.12);
+  border-radius: 22px;
+  background: rgba(2, 8, 18, 0.26);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.ecosystem-map::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: min(46vw, 420px);
+  aspect-ratio: 1;
+  content: "";
+  pointer-events: none;
+  border: 1px solid rgba(69, 230, 255, 0.08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 34px rgba(69, 230, 255, 0.045),
+    inset 0 0 28px rgba(69, 230, 255, 0.035);
+  transform: translate(-50%, -50%);
+}
+
+.ecosystem-map::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: min(31vw, 280px);
+  aspect-ratio: 1;
+  content: "";
+  pointer-events: none;
+  border: 1px solid rgba(125, 255, 178, 0.055);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ecosystem-lines {
+  position: absolute;
+  z-index: 2;
+  inset: 26px;
+  width: calc(100% - 52px);
+  height: calc(100% - 52px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ecosystem-paths path {
+  fill: none;
+  stroke: url(#ecosystemLineGradient);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-dasharray: 6 12;
+  opacity: 0.42;
+}
+
+.ecosystem-travelers circle {
+  fill: var(--cyan);
+  opacity: 0.95;
+  filter: drop-shadow(0 0 7px rgba(69, 230, 255, 0.82));
+}
+
+.ecosystem-node {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  max-width: 190px;
+  padding: 8px 11px 8px 8px;
+  border: 1px solid rgba(151, 198, 255, 0.18);
+  border-radius: 999px;
+  color: #eaf8ff;
+  background:
+    linear-gradient(145deg, rgba(6, 16, 31, 0.94), rgba(4, 10, 22, 0.88));
+  box-shadow:
+    0 14px 38px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(2, 8, 18, 0.72),
+    0 0 24px rgba(69, 230, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(14px);
+  animation: ecosystemNodePulse 4.8s ease-in-out infinite;
+}
+
+.ecosystem-node span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f7fbff 0 16%, var(--cyan) 17% 46%, rgba(69, 230, 255, 0.22) 47% 100%);
+  box-shadow:
+    0 0 16px rgba(69, 230, 255, 0.72),
+    0 0 28px rgba(143, 124, 255, 0.22);
+}
+
+.ecosystem-node span::after {
+  position: absolute;
+  inset: -7px;
+  border: 1px solid rgba(69, 230, 255, 0.22);
+  border-radius: inherit;
+  content: "";
+  opacity: 0.8;
+  animation: ecosystemRing 3.8s ease-in-out infinite;
+}
+
+.ecosystem-node strong {
+  font-size: 0.82rem;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.ecosystem-node-center {
+  z-index: 11;
+  gap: 12px;
+  padding: 11px 15px 11px 11px;
+  border-color: rgba(69, 230, 255, 0.36);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(69, 230, 255, 0.18), transparent 4rem),
+    rgba(5, 12, 24, 0.84);
+  box-shadow:
+    0 18px 58px rgba(0, 0, 0, 0.36),
+    0 0 42px rgba(69, 230, 255, 0.2),
+    0 0 56px rgba(143, 124, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.ecosystem-node-center span {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: transparent;
+  box-shadow: 0 0 24px rgba(69, 230, 255, 0.34);
+  overflow: hidden;
+}
+
+.ecosystem-node-center span::after {
+  inset: -10px;
+  border-radius: 18px;
+}
+
+.ecosystem-node-center img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: drop-shadow(0 0 8px rgba(69, 230, 255, 0.44));
+}
+
+.ecosystem-node-center strong {
+  font-size: 1rem;
+}
+
+.ecosystem-summary {
+  position: relative;
+  align-self: end;
+  z-index: 12;
+  max-width: none;
+  padding: 18px 18px 20px;
+  border: 1px solid rgba(69, 230, 255, 0.22);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(69, 230, 255, 0.12), transparent 9rem),
+    radial-gradient(circle at 100% 100%, rgba(143, 124, 255, 0.13), transparent 10rem),
+    rgba(5, 12, 24, 0.62);
+  box-shadow:
+    0 18px 54px rgba(0, 0, 0, 0.24),
+    0 0 28px rgba(69, 230, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(16px);
+}
+
+.ecosystem-summary span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ecosystem-summary p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.62;
 }
 
 .window-bar {
@@ -1218,8 +1468,7 @@ p {
   gap: 8px;
 }
 
-.software-card .card-actions .btn,
-.software-card.coming .card-actions .btn {
+.software-card .card-actions .btn {
   min-height: 38px;
   padding: 0 14px;
 }
@@ -1231,6 +1480,119 @@ p {
 .software-card h3 {
   margin: 0 0 12px;
   line-height: 1.2;
+}
+
+.future-software-section {
+  padding-top: 26px;
+}
+
+.future-software-banner {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  padding: 28px;
+  border: 1px solid rgba(151, 198, 255, 0.2);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(69, 230, 255, 0.14), transparent 18rem),
+    radial-gradient(circle at 92% 18%, rgba(143, 124, 255, 0.16), transparent 18rem),
+    linear-gradient(145deg, rgba(9, 17, 31, 0.86), rgba(12, 20, 36, 0.62));
+  box-shadow:
+    0 26px 86px rgba(0, 0, 0, 0.34),
+    0 0 44px rgba(69, 230, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.future-software-banner::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(69, 230, 255, 0.14), transparent 32%, rgba(143, 124, 255, 0.12));
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.future-software-accent {
+  position: absolute;
+  right: 28px;
+  bottom: 0;
+  left: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(69, 230, 255, 0.9), rgba(143, 124, 255, 0.82), transparent);
+  box-shadow: 0 0 24px rgba(69, 230, 255, 0.28);
+  pointer-events: none;
+}
+
+.future-software-copy,
+.future-software-actions {
+  position: relative;
+  z-index: 1;
+}
+
+.future-software-copy {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.future-software-logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  box-shadow:
+    0 0 24px rgba(69, 230, 255, 0.3),
+    0 0 44px rgba(143, 124, 255, 0.16);
+}
+
+.future-software-copy h3 {
+  margin: 0 0 10px;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.08;
+}
+
+.future-software-copy p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.future-software-actions {
+  display: grid;
+  gap: 18px;
+  justify-items: end;
+}
+
+.future-status-badges,
+.future-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.future-status-badges span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(69, 230, 255, 0.22);
+  border-radius: 999px;
+  color: #dffaff;
+  background: rgba(69, 230, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.future-button-row .btn {
+  min-height: 44px;
 }
 
 .card-top {
@@ -2054,7 +2416,7 @@ p {
 .modal {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 2000;
   display: grid;
   place-items: center;
   padding: 20px;
@@ -2360,6 +2722,34 @@ p {
   }
 }
 
+@keyframes ecosystemNodePulse {
+  0%, 100% {
+    border-color: rgba(151, 198, 255, 0.18);
+    box-shadow:
+      0 14px 38px rgba(0, 0, 0, 0.28),
+      0 0 22px rgba(69, 230, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    border-color: rgba(69, 230, 255, 0.34);
+    box-shadow:
+      0 16px 42px rgba(0, 0, 0, 0.32),
+      0 0 30px rgba(69, 230, 255, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes ecosystemRing {
+  0%, 100% {
+    opacity: 0.36;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.86;
+    transform: scale(1.08);
+  }
+}
+
 @keyframes modalIn {
   from {
     opacity: 0;
@@ -2384,6 +2774,26 @@ p {
   .featured-product,
   .product-detail-shell {
     grid-template-columns: 1fr;
+  }
+
+  .ecosystem-section {
+    padding-top: 38px;
+  }
+
+  .ecosystem-panel {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px;
+  }
+
+  .ecosystem-map {
+    min-height: 500px;
+  }
+
+  .ecosystem-lines {
+    inset: 22px;
+    width: calc(100% - 44px);
+    height: calc(100% - 44px);
   }
 
   .hero {
@@ -2418,6 +2828,20 @@ p {
     justify-content: stretch;
   }
 
+  .future-software-banner {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .future-software-actions {
+    justify-items: start;
+  }
+
+  .future-status-badges,
+  .future-button-row {
+    justify-content: flex-start;
+  }
+
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2438,6 +2862,16 @@ p {
 
   .category-tabs {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 1240px) {
+  .nav-actions {
+    display: none;
+  }
+
+  .navbar {
+    max-width: 900px;
   }
 }
 
@@ -2552,19 +2986,110 @@ p {
     padding-top: 38px;
   }
 
+  .ecosystem-section {
+    padding-top: 24px;
+  }
+
+  .ecosystem-panel {
+    gap: 16px;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .ecosystem-map {
+    min-height: 460px;
+    border-radius: 18px;
+  }
+
+  .ecosystem-lines {
+    inset: 18px;
+    width: calc(100% - 36px);
+    height: calc(100% - 36px);
+  }
+
+  .ecosystem-node {
+    gap: 7px;
+    max-width: 150px;
+    padding: 7px 9px 7px 7px;
+  }
+
+  .ecosystem-node span {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ecosystem-node strong {
+    font-size: 0.74rem;
+  }
+
+  .ecosystem-node-center span {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+  }
+
+  .ecosystem-node-center strong {
+    font-size: 0.9rem;
+  }
+
+  .ecosystem-summary {
+    width: 100%;
+    padding: 14px 16px;
+  }
+
   .hero-actions,
   .card-actions,
-  .modal-actions {
+  .modal-actions,
+  .future-button-row {
     align-items: stretch;
     flex-direction: column;
   }
 
   .hero-actions .btn,
   .card-actions .btn,
-  .modal-actions .btn {
+  .modal-actions .btn,
+  .future-button-row .btn {
     width: 100%;
     min-height: 48px;
     padding: 0 16px;
+  }
+
+  .future-software-section {
+    padding-top: 10px;
+  }
+
+  .future-software-banner {
+    gap: 22px;
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .future-software-copy {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .future-software-logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .future-software-actions,
+  .future-status-badges,
+  .future-button-row {
+    width: 100%;
+  }
+
+  .future-button-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .future-button-row .btn {
+    justify-content: center;
+    height: 50px;
+    flex: none;
   }
 
   .btn-large {
@@ -2782,8 +3307,7 @@ p {
     gap: 8px;
   }
 
-  .card-actions .btn,
-  .software-card.coming .card-actions .btn {
+  .card-actions .btn {
     flex: 1 1 100%;
     min-width: 0;
   }
@@ -2930,6 +3454,199 @@ p {
     padding-top: 34px;
   }
 
+  .ecosystem-section {
+    padding-top: 10px;
+    width: 100%;
+    max-width: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .ecosystem-section .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .ecosystem-panel {
+    width: 100%;
+    max-width: 100%;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .ecosystem-map {
+    width: 100%;
+    min-height: 430px;
+    max-width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .ecosystem-map::before,
+  .ecosystem-map::after {
+    display: block;
+  }
+
+  .ecosystem-map::before {
+    width: min(72vw, 270px);
+  }
+
+  .ecosystem-map::after {
+    width: min(48vw, 180px);
+  }
+
+  .ecosystem-grid {
+    background-size: 34px 34px;
+    opacity: 0.56;
+  }
+
+  .ecosystem-lines {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ecosystem-paths path {
+    stroke-width: 1.25;
+    stroke-dasharray: 4 13;
+    opacity: 0.3;
+  }
+
+  .ecosystem-travelers circle {
+    r: 2.6px;
+  }
+
+  .ecosystem-node {
+    position: absolute;
+    isolation: isolate;
+    gap: 5px;
+    max-width: min(32vw, 122px);
+    min-height: 24px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background:
+      linear-gradient(145deg, rgb(6, 16, 31), rgb(4, 10, 22));
+  }
+
+  .ecosystem-node-center {
+    --x: 50% !important;
+    --y: 48% !important;
+    transform: translate(-50%, -50%);
+  }
+
+  .ecosystem-node-sync {
+    --x: 10% !important;
+    --y: 24% !important;
+    transform: translate(0, -50%);
+  }
+
+  .ecosystem-node-game {
+    --x: 90% !important;
+    --y: 24% !important;
+    flex-direction: row-reverse;
+    transform: translate(-100%, -50%);
+  }
+
+  .ecosystem-node-frame {
+    --x: 7% !important;
+    --y: 63% !important;
+    transform: translate(0, -50%);
+  }
+
+  .ecosystem-node-future {
+    --x: 93% !important;
+    --y: 63% !important;
+    flex-direction: row-reverse;
+    transform: translate(-100%, -50%);
+  }
+
+  .ecosystem-node-support {
+    --x: 50% !important;
+    --y: 9% !important;
+    transform: translate(-50%, 0);
+  }
+
+  .ecosystem-node-license {
+    --x: 8% !important;
+    --y: 88% !important;
+    transform: translate(0, -50%);
+  }
+
+  .ecosystem-node-github {
+    --x: 92% !important;
+    --y: 88% !important;
+    flex-direction: row-reverse;
+    transform: translate(-100%, -50%);
+  }
+
+  .ecosystem-node span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+  }
+
+  .ecosystem-node-game span,
+  .ecosystem-node-future span,
+  .ecosystem-node-github span {
+    right: 0;
+    left: auto;
+    transform: translate(50%, -50%);
+  }
+
+  .ecosystem-node span::after {
+    inset: -5px;
+  }
+
+  .ecosystem-node strong {
+    font-size: 0.62rem;
+    line-height: 1.12;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .ecosystem-node-center {
+    flex-direction: column;
+    gap: 7px;
+    padding: 10px 12px;
+    border-radius: 18px;
+  }
+
+  .ecosystem-node-center span {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 11px;
+    transform: none;
+  }
+
+  .ecosystem-node-center strong {
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .ecosystem-summary {
+    inset: auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .ecosystem-summary span {
+    font-size: 0.66rem;
+  }
+
+  .ecosystem-summary p {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
   .hero-showcase {
     display: block;
     min-height: 332px;
@@ -3019,6 +3736,74 @@ p {
 
   .software-toolbar {
     gap: 10px;
+  }
+
+  .future-software-section {
+    padding-top: 0;
+  }
+
+  .future-software-section .section-heading {
+    margin-bottom: 16px;
+  }
+
+  .future-software-banner {
+    gap: 14px;
+    padding: 16px;
+    border-radius: 16px;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(69, 230, 255, 0.12), transparent 13rem),
+      radial-gradient(circle at 100% 6%, rgba(143, 124, 255, 0.14), transparent 13rem),
+      linear-gradient(145deg, rgba(9, 17, 31, 0.88), rgba(12, 20, 36, 0.64));
+  }
+
+  .future-software-accent {
+    right: 16px;
+    left: 16px;
+  }
+
+  .future-software-copy {
+    gap: 10px;
+  }
+
+  .future-software-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  .future-software-copy h3 {
+    margin-bottom: 7px;
+    font-size: 1.16rem;
+    line-height: 1.16;
+  }
+
+  .future-software-copy p {
+    font-size: 0.9rem;
+    line-height: 1.52;
+  }
+
+  .future-software-actions {
+    gap: 12px;
+  }
+
+  .future-status-badges {
+    gap: 7px;
+  }
+
+  .future-status-badges span {
+    min-height: 26px;
+    padding: 0 9px;
+    font-size: 0.68rem;
+    line-height: 1;
+  }
+
+  .future-button-row {
+    gap: 9px;
+  }
+
+  .future-button-row .btn {
+    height: 48px;
+    min-height: 48px;
   }
 
   .search-box {
@@ -3591,6 +4376,46 @@ p {
     min-height: 316px;
   }
 
+  .ecosystem-panel {
+    padding: 12px;
+  }
+
+  .ecosystem-map {
+    min-height: 405px;
+  }
+
+  .ecosystem-node {
+    max-width: min(34vw, 108px);
+  }
+
+  .ecosystem-node strong {
+    font-size: 0.58rem;
+  }
+
+  .ecosystem-node-sync {
+    --x: 6% !important;
+  }
+
+  .ecosystem-node-game {
+    --x: 94% !important;
+  }
+
+  .ecosystem-node-frame {
+    --x: 5% !important;
+  }
+
+  .ecosystem-node-future {
+    --x: 95% !important;
+  }
+
+  .ecosystem-node-license {
+    --x: 5% !important;
+  }
+
+  .ecosystem-node-github {
+    --x: 95% !important;
+  }
+
   .floating-card {
     width: min(144px, calc(100% - 116px));
   }
@@ -3773,8 +4598,7 @@ p {
     padding-top: 0;
   }
 
-  #software .card-actions .btn,
-  #software .software-card.coming .card-actions .btn {
+  #software .card-actions .btn {
     width: 100%;
     height: 44px;
     min-height: 44px;
@@ -3788,7 +4612,8 @@ p {
 
 @media (prefers-reduced-motion: reduce) {
   #particleCanvas,
-  body::after {
+  body::after,
+  .ecosystem-travelers {
     display: none;
   }
 

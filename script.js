@@ -28,6 +28,28 @@ let particles = [];
 let particleFrame = null;
 let particlePixelRatio = 1;
 
+const ecosystemPathSets = {
+  desktop: [
+    "M500 280 C380 210 300 150 210 118",
+    "M500 280 C620 200 704 148 810 116",
+    "M500 280 C368 296 260 332 148 402",
+    "M500 280 C636 292 746 330 858 408",
+    "M500 280 C456 190 440 128 436 64",
+    "M500 280 C548 370 574 454 606 510",
+    "M500 280 C400 372 334 448 276 508"
+  ],
+  mobile: [
+    "M500 269 C380 150 230 94 100 134",
+    "M500 269 C620 150 770 94 900 134",
+    "M500 269 C360 348 220 414 70 353",
+    "M500 269 C640 348 780 414 930 353",
+    "M500 269 C360 218 360 86 500 50",
+    "M500 269 C690 328 790 490 920 493",
+    "M500 269 C310 328 180 490 50 493"
+  ]
+};
+const ecosystemMobileQuery = window.matchMedia("(max-width: 480px)");
+
 window.addEventListener("load", () => {
   window.setTimeout(() => {
     loader?.classList.add("hidden");
@@ -123,6 +145,23 @@ if (canUsePointerHover.matches && !prefersReducedMotion.matches) {
     });
   });
 }
+
+function updateEcosystemPaths() {
+  const paths = ecosystemMobileQuery.matches ? ecosystemPathSets.mobile : ecosystemPathSets.desktop;
+  const linePaths = document.querySelectorAll(".ecosystem-paths path");
+  const motionPaths = document.querySelectorAll(".ecosystem-travelers animateMotion");
+
+  linePaths.forEach((path, index) => {
+    path.setAttribute("d", paths[index]);
+  });
+
+  motionPaths.forEach((path, index) => {
+    path.setAttribute("path", paths[index]);
+  });
+}
+
+updateEcosystemPaths();
+ecosystemMobileQuery.addEventListener("change", updateEcosystemPaths);
 
 document.querySelectorAll(".open-modal").forEach((button) => {
   button.addEventListener("click", () => {
