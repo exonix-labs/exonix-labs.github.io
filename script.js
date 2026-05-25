@@ -1,6 +1,6 @@
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
-const navLinks = navMenu.querySelectorAll("a");
+const navLinks = navMenu ? navMenu.querySelectorAll("a") : [];
 const searchInput = document.querySelector("#softwareSearch");
 const tabs = document.querySelectorAll(".tab");
 const softwareCards = document.querySelectorAll(".software-card");
@@ -13,8 +13,10 @@ const modalVersion = document.querySelector("#modalVersion");
 const modalStatus = document.querySelector("#modalStatus");
 const modalDirectDownload = document.querySelector("#modalDirectDownload");
 const modalGithubDownload = document.querySelector("#modalGithubDownload");
+const swiftDropDownloadModal = document.querySelector("#swiftdropDownloadModal");
 const futureModal = document.querySelector("#futureProductModal");
 const clearDeskModal = document.querySelector("#clearDeskModal");
+const swiftDropModal = document.querySelector("#swiftDropModal");
 const supportModals = document.querySelectorAll(".support-modal");
 const backToTop = document.querySelector(".back-to-top");
 const canvas = document.querySelector("#particleCanvas");
@@ -56,7 +58,7 @@ window.addEventListener("load", () => {
   }, prefersReducedMotion.matches ? 80 : 900);
 });
 
-navToggle.addEventListener("click", () => {
+navToggle?.addEventListener("click", () => {
   const isOpen = navMenu.classList.toggle("open");
   navToggle.setAttribute("aria-expanded", String(isOpen));
 });
@@ -69,7 +71,10 @@ navLinks.forEach((link) => {
 });
 
 const sectionTargets = Array.from(navLinks)
-  .map((link) => document.querySelector(link.getAttribute("href")))
+  .map((link) => {
+    const href = link.getAttribute("href");
+    return href?.startsWith("#") ? document.querySelector(href) : null;
+  })
   .filter(Boolean);
 
 function updateActiveNavLink() {
@@ -94,7 +99,7 @@ function updateActiveNavLink() {
 }
 
 function filterSoftware() {
-  const query = searchInput.value.trim().toLowerCase();
+  const query = searchInput?.value.trim().toLowerCase() || "";
 
   softwareCards.forEach((card) => {
     const name = card.dataset.name.toLowerCase();
@@ -105,7 +110,7 @@ function filterSoftware() {
   });
 }
 
-searchInput.addEventListener("input", filterSoftware);
+searchInput?.addEventListener("input", filterSoftware);
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
@@ -116,7 +121,7 @@ tabs.forEach((tab) => {
   });
 });
 
-viewFreeToolsBtn.addEventListener("click", (event) => {
+viewFreeToolsBtn?.addEventListener("click", (event) => {
   event.preventDefault();
 
   searchInput.value = "";
@@ -166,6 +171,7 @@ ecosystemMobileQuery.addEventListener("change", updateEcosystemPaths);
 document.querySelectorAll(".open-modal").forEach((button) => {
   button.addEventListener("click", () => {
     const card = button.closest(".software-card");
+    if (!card || !modal) return;
     modalTitle.textContent = card.dataset.name;
     modalDescription.textContent = card.querySelector(".card-description")?.textContent || card.querySelector("p").textContent;
     modalVersion.textContent = card.dataset.version;
@@ -179,14 +185,30 @@ document.querySelectorAll(".open-modal").forEach((button) => {
 
 document.querySelectorAll("[data-close-modal]").forEach((item) => {
   item.addEventListener("click", () => {
-    modal.classList.remove("active");
-    modal.setAttribute("aria-hidden", "true");
+    modal?.classList.remove("active");
+    modal?.setAttribute("aria-hidden", "true");
+  });
+});
+
+document.querySelectorAll(".open-swiftdrop-download-modal").forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!swiftDropDownloadModal) return;
+    swiftDropDownloadModal.classList.add("active");
+    swiftDropDownloadModal.setAttribute("aria-hidden", "false");
+  });
+});
+
+document.querySelectorAll("[data-close-swiftdrop-download-modal]").forEach((item) => {
+  item.addEventListener("click", () => {
+    swiftDropDownloadModal?.classList.remove("active");
+    swiftDropDownloadModal?.setAttribute("aria-hidden", "true");
   });
 });
 
 document.querySelectorAll(".open-future-modal").forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
+    if (!futureModal) return;
     futureModal.classList.add("active");
     futureModal.setAttribute("aria-hidden", "false");
   });
@@ -194,13 +216,14 @@ document.querySelectorAll(".open-future-modal").forEach((link) => {
 
 document.querySelectorAll("[data-close-future-modal]").forEach((item) => {
   item.addEventListener("click", () => {
-    futureModal.classList.remove("active");
-    futureModal.setAttribute("aria-hidden", "true");
+    futureModal?.classList.remove("active");
+    futureModal?.setAttribute("aria-hidden", "true");
   });
 });
 
 document.querySelectorAll(".open-cleardesk-modal").forEach((button) => {
   button.addEventListener("click", () => {
+    if (!clearDeskModal) return;
     clearDeskModal.classList.add("active");
     clearDeskModal.setAttribute("aria-hidden", "false");
   });
@@ -208,8 +231,23 @@ document.querySelectorAll(".open-cleardesk-modal").forEach((button) => {
 
 document.querySelectorAll("[data-close-cleardesk-modal]").forEach((item) => {
   item.addEventListener("click", () => {
-    clearDeskModal.classList.remove("active");
-    clearDeskModal.setAttribute("aria-hidden", "true");
+    clearDeskModal?.classList.remove("active");
+    clearDeskModal?.setAttribute("aria-hidden", "true");
+  });
+});
+
+document.querySelectorAll(".open-swiftdrop-modal").forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!swiftDropModal) return;
+    swiftDropModal.classList.add("active");
+    swiftDropModal.setAttribute("aria-hidden", "false");
+  });
+});
+
+document.querySelectorAll("[data-close-swiftdrop-modal]").forEach((item) => {
+  item.addEventListener("click", () => {
+    swiftDropModal?.classList.remove("active");
+    swiftDropModal?.setAttribute("aria-hidden", "true");
   });
 });
 
@@ -274,12 +312,16 @@ document.querySelectorAll(".support-form").forEach((form) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    modal.classList.remove("active");
-    modal.setAttribute("aria-hidden", "true");
-    futureModal.classList.remove("active");
-    futureModal.setAttribute("aria-hidden", "true");
-    clearDeskModal.classList.remove("active");
-    clearDeskModal.setAttribute("aria-hidden", "true");
+    modal?.classList.remove("active");
+    modal?.setAttribute("aria-hidden", "true");
+    swiftDropDownloadModal?.classList.remove("active");
+    swiftDropDownloadModal?.setAttribute("aria-hidden", "true");
+    futureModal?.classList.remove("active");
+    futureModal?.setAttribute("aria-hidden", "true");
+    clearDeskModal?.classList.remove("active");
+    clearDeskModal?.setAttribute("aria-hidden", "true");
+    swiftDropModal?.classList.remove("active");
+    swiftDropModal?.setAttribute("aria-hidden", "true");
     supportModals.forEach((supportModal) => {
       supportModal.classList.remove("active");
       supportModal.setAttribute("aria-hidden", "true");
@@ -330,11 +372,11 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll("[data-count]").forEach((item) => counterObserver.observe(item));
 
 window.addEventListener("scroll", () => {
-  backToTop.classList.toggle("visible", window.scrollY > 640);
+  backToTop?.classList.toggle("visible", window.scrollY > 640);
   updateActiveNavLink();
 });
 
-backToTop.addEventListener("click", () => {
+backToTop?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
